@@ -2,7 +2,10 @@ import 'package:auctionpal/styles/AppFontStyles.dart';
 import 'package:auctionpal/styles/colors.dart';
 import 'package:flutter/material.dart';
 class NextBtn extends StatelessWidget {
-  const NextBtn({super.key});
+  String btnText;
+
+
+  NextBtn(this.btnText);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class NextBtn extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Next', style: medTextflyer.copyWith(color: appMainColor),),
+            Text(btnText, style: medTextflyer.copyWith(color: appMainColor),),
             Icon(Icons.arrow_forward, color: appMainColor,),
           ],
         ),
