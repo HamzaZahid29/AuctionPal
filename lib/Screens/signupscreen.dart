@@ -58,10 +58,10 @@ class SignUpPage extends StatelessWidget {
                       Expanded(
                         child: PageView(
                           children: [
-                              EmailPassword(),
-                              EmailPassword(),
-                              EmailPassword(),
-                              EmailPassword(),
+                              // EmailPassword(),
+                              // EmailPassword(),
+                              // EmailPassword(),
+                              // EmailPassword(),
                           ],
                         ),
                       ),

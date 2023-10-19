@@ -4,7 +4,12 @@ import 'package:auctionpal/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class EmailPassword extends StatefulWidget {
-  const EmailPassword({super.key});
+  TextEditingController email;
+  TextEditingController password;
+  TextEditingController cpassword;
+
+
+  EmailPassword(this.email, this.password, this.cpassword);
 
   @override
   State<EmailPassword> createState() => _EmailPasswordState();
@@ -22,6 +27,7 @@ class _EmailPasswordState extends State<EmailPassword> {
           children: [
             Text('Email :', style: medTextflyer.copyWith(color: secColor),),
             TextField(
+              controller: widget.email,
               textAlign: TextAlign.center,
               keyboardType: TextInputType.emailAddress,
               style: TextStyle(
@@ -32,6 +38,7 @@ class _EmailPasswordState extends State<EmailPassword> {
             SizedBox(height: 20,),
             Text('Password :', style: medTextflyer.copyWith(color: secColor),),
             TextField(
+              controller: widget.password,
               textAlign: TextAlign.center,
               keyboardType: TextInputType.visiblePassword,
               style: TextStyle(
@@ -42,6 +49,7 @@ class _EmailPasswordState extends State<EmailPassword> {
             SizedBox(height: 20,),
             Text('Re-Type Password :', style: medTextflyer.copyWith(color: secColor),),
             TextField(
+                controller: widget.cpassword,
               textAlign: TextAlign.center,
               keyboardType: TextInputType.visiblePassword,
               style: TextStyle(
