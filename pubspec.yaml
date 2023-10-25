@@ -42,6 +42,7 @@ dependencies:
   firebase_core: ^2.18.0
   provider:
   modal_progress_hud_nsn: ^0.4.0
+  google_nav_bar: ^5.0.6
 
 dev_dependencies:
   flutter_test:

@@ -1,3 +1,4 @@
+import 'package:auctionpal/Screens/MainPages/MainPage.dart';
 import 'package:auctionpal/Screens/OTPScreen.dart';
 import 'package:auctionpal/Screens/completion.dart';
 import 'package:auctionpal/components/errorwidet.dart';
@@ -71,7 +72,11 @@ class _MinimalSignUpState extends State<MinimalSignUp> {
                     final userProvider =
                         Provider.of<UserProvider>(context, listen: false);
                     if(userProvider.userCreated == true){
-                        pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.easeIn);
+                       if(pageController.page! < 2){
+                         pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.easeIn);
+                       }else{
+                         Navigator.pushNamed(context, HomeScreen.ID);
+                       }
 
 
                     }else if(userProvider.userCreated == false){

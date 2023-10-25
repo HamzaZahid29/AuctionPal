@@ -10,6 +10,7 @@ import 'package:auctionpal/theme/darktheme.dart';
 import 'package:auctionpal/Screens/MinimalSigbUp.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
+import 'package:auctionpal/Screens/MainPages/MainPage.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -21,7 +22,7 @@ void main() async{
       theme: lightTheme,
       darkTheme: darktheme,
 
-      initialRoute:splashScreen.ID  ,
+      initialRoute:splashScreen.ID,
       routes: {
         splashScreen.ID : (context){
           return splashScreen();
@@ -34,6 +35,9 @@ void main() async{
         },
         MinimalSignUp.ID : (context){
           return MinimalSignUp();
+        },
+        HomeScreen.ID : (context){
+          return HomeScreen();
         }
       },
     ),

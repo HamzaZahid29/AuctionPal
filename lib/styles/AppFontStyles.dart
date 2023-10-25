@@ -24,3 +24,8 @@ TextStyle smallSharpText = TextStyle(
   // fontFamily: 'BlackHanSans',
   fontWeight: FontWeight.w300
 );
+TextStyle smallTileText = TextStyle(
+  fontSize: 19,
+  // fontFamily: 'BlackHanSans',
+  fontWeight: FontWeight.w700
+);
