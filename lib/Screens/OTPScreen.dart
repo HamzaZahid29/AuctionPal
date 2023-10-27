@@ -13,10 +13,15 @@ class OTPScreen extends StatelessWidget {
       padding: EdgeInsets.all(30),
       child: Column(
         children: [
-          Expanded(child: Text('Enter the OTP that we sent to your Email',textAlign: TextAlign.center, style: smallTextflyer.copyWith(color: secColor),)),
+          Expanded(
+              child: Text(
+            'Enter the OTP that we sent to your Email',
+            textAlign: TextAlign.center,
+            style: smallTextflyer.copyWith(color: secColor),
+          )),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -100,8 +105,6 @@ class OTPScreen extends StatelessWidget {
               ),
             ),
           ),
-          
-
         ],
       ),
     );

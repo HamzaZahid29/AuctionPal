@@ -6,7 +6,6 @@ class logsignswitch extends StatefulWidget {
   bool toggleswitch;
   Function buttonTap;
 
-
   logsignswitch(this.toggleswitch, this.buttonTap);
 
   @override
@@ -14,53 +13,54 @@ class logsignswitch extends StatefulWidget {
 }
 
 class _logsignswitchState extends State<logsignswitch> {
-
-
-
-  void toggle(){
+  void toggle() {
     widget.buttonTap();
-    if(widget.toggleswitch == false){
+    if (widget.toggleswitch == false) {
       setState(() {
-
         widget.toggleswitch = true;
       });
-    }else{
+    } else {
       setState(() {
-
         widget.toggleswitch = false;
       });
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         GestureDetector(
-          onTap: (){
+          onTap: () {
             toggle();
           },
           child: AnimatedContainer(
             duration: Duration(milliseconds: 300),
             width: 120,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft:Radius.circular(10)),
-              border: Border.all(
-                color: appColor.secColor,
-                width: 1
-              ),
-              color:widget.toggleswitch ?  appColor.appMainColor : appColor.secColor,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  bottomLeft: Radius.circular(10)),
+              border: Border.all(color: appColor.secColor, width: 1),
+              color: widget.toggleswitch
+                  ? appColor.appMainColor
+                  : appColor.secColor,
             ),
             padding: EdgeInsets.all(10),
             child: Center(
-              child: Text('login', style: smallTextflyer.copyWith(
-                color:widget.toggleswitch?appColor.secColor : appColor.appMainColor
-              ),),
+              child: Text(
+                'login',
+                style: smallTextflyer.copyWith(
+                    color: widget.toggleswitch
+                        ? appColor.secColor
+                        : appColor.appMainColor),
+              ),
             ),
           ),
         ),
         GestureDetector(
-          onTap: (){
+          onTap: () {
             toggle();
             widget.toggleswitch;
           },
@@ -68,18 +68,24 @@ class _logsignswitchState extends State<logsignswitch> {
             duration: Duration(milliseconds: 300),
             width: 120,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(topRight: Radius.circular(10), bottomRight:Radius.circular(10)),
-              border: Border.all(
-                  color: appColor.secColor,
-                  width: 1
-              ),
-              color:widget.toggleswitch ?appColor.secColor : appColor.appMainColor,
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(10),
+                  bottomRight: Radius.circular(10)),
+              border: Border.all(color: appColor.secColor, width: 1),
+              color: widget.toggleswitch
+                  ? appColor.secColor
+                  : appColor.appMainColor,
             ),
             padding: EdgeInsets.all(10),
             child: Center(
-              child: Text('SignUp', style: smallTextflyer.copyWith(
-                  color:widget.toggleswitch?appColor.appMainColor :appColor.secColor,
-              ),),
+              child: Text(
+                'SignUp',
+                style: smallTextflyer.copyWith(
+                  color: widget.toggleswitch
+                      ? appColor.appMainColor
+                      : appColor.secColor,
+                ),
+              ),
             ),
           ),
         ),

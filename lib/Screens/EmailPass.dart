@@ -8,7 +8,6 @@ class EmailPassword extends StatefulWidget {
   TextEditingController password;
   TextEditingController cpassword;
 
-
   EmailPassword(this.email, this.password, this.cpassword);
 
   @override
@@ -25,38 +24,42 @@ class _EmailPasswordState extends State<EmailPassword> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Email :', style: medTextflyer.copyWith(color: secColor),),
-            TextField(
-              controller: widget.email,
-              textAlign: TextAlign.center,
-              keyboardType: TextInputType.emailAddress,
-              style: TextStyle(
-                color: secColor
-              ),
-              decoration: EmailPass.copyWith(hintText: "someone@email.com")
+            Text(
+              'Email :',
+              style: medTextflyer.copyWith(color: secColor),
             ),
-            SizedBox(height: 20,),
-            Text('Password :', style: medTextflyer.copyWith(color: secColor),),
             TextField(
-              controller: widget.password,
-              textAlign: TextAlign.center,
-              keyboardType: TextInputType.visiblePassword,
-              style: TextStyle(
-                color: secColor
-              ),
-              decoration: EmailPass.copyWith(hintText: "********")
+                controller: widget.email,
+                textAlign: TextAlign.center,
+                keyboardType: TextInputType.emailAddress,
+                style: TextStyle(color: secColor),
+                decoration: EmailPass.copyWith(hintText: "someone@email.com")),
+            SizedBox(
+              height: 20,
             ),
-            SizedBox(height: 20,),
-            Text('Re-Type Password :', style: medTextflyer.copyWith(color: secColor),),
+            Text(
+              'Password :',
+              style: medTextflyer.copyWith(color: secColor),
+            ),
+            TextField(
+                controller: widget.password,
+                textAlign: TextAlign.center,
+                keyboardType: TextInputType.visiblePassword,
+                style: TextStyle(color: secColor),
+                decoration: EmailPass.copyWith(hintText: "********")),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              'Re-Type Password :',
+              style: medTextflyer.copyWith(color: secColor),
+            ),
             TextField(
                 controller: widget.cpassword,
-              textAlign: TextAlign.center,
-              keyboardType: TextInputType.visiblePassword,
-              style: TextStyle(
-                color: secColor
-              ),
-              decoration: EmailPass.copyWith(hintText: "********")
-            ),
+                textAlign: TextAlign.center,
+                keyboardType: TextInputType.visiblePassword,
+                style: TextStyle(color: secColor),
+                decoration: EmailPass.copyWith(hintText: "********")),
           ],
         ),
       ),

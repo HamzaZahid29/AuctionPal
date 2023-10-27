@@ -1,4 +1,4 @@
-class Userlog{
+class Userlog {
   String email;
   String password;
   String retypePassword;

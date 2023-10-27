@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:auctionpal/styles/AppFontStyles.dart';
 import 'package:lottie/lottie.dart';
 import 'logsignbtn.dart';
+
 class loginflyer extends StatelessWidget {
   const loginflyer({super.key});
 
@@ -22,7 +23,9 @@ class loginflyer extends StatelessWidget {
               style: BigTextflyer,
             ),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
         ],
       ),
     );

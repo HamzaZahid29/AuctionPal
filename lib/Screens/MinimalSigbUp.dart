@@ -16,6 +16,7 @@ import 'package:lottie/lottie.dart';
 
 class MinimalSignUp extends StatefulWidget {
   const MinimalSignUp({super.key});
+
   static String ID = 'MinimalSignUp';
 
   @override
@@ -35,13 +36,15 @@ class _MinimalSignUpState extends State<MinimalSignUp> {
     // TODO: implement dispose
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: ModalProgressHUD(
         inAsyncCall: Provider.of<UserProvider>(context, listen: true).isLoading,
-        progressIndicator: Lottie.asset('assets/loading.json', height: 200, width: 200),
+        progressIndicator:
+            Lottie.asset('assets/loading.json', height: 200, width: 200),
         child: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -67,27 +70,25 @@ class _MinimalSignUpState extends State<MinimalSignUp> {
                     ],
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    final userProvider =
-                        Provider.of<UserProvider>(context, listen: false);
-                    if(userProvider.userCreated == true){
-                       if(pageController.page! < 2){
-                         pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.easeIn);
-                       }else{
-                         Navigator.pushNamed(context, HomeScreen.ID);
-                       }
-
-
-                    }else if(userProvider.userCreated == false){
-                      userProvider.createUser(emailcontroller.text, passwordController.text, repasswordController.text);
+                GestureDetector(onTap: () {
+                  final userProvider =
+                      Provider.of<UserProvider>(context, listen: false);
+                  if (userProvider.userCreated == true) {
+                    if (pageController.page! < 2) {
+                      pageController.nextPage(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeIn);
+                    } else {
+                      Navigator.pushNamed(context, HomeScreen.ID);
                     }
-
-                  },
-                  child:Consumer<UserProvider>(builder: (context, userProvider, child) {
-                    return NextBtn(userProvider.btnText);
-                  })
-                ),
+                  } else if (userProvider.userCreated == false) {
+                    userProvider.createUser(emailcontroller.text,
+                        passwordController.text, repasswordController.text);
+                  }
+                }, child: Consumer<UserProvider>(
+                    builder: (context, userProvider, child) {
+                  return NextBtn(userProvider.btnText);
+                })),
                 Consumer<UserProvider>(builder: (context, userProvider, child) {
                   return Text(
                     userProvider.errorData,

@@ -6,6 +6,7 @@ import 'package:lottie/lottie.dart';
 
 class splashScreen extends StatelessWidget {
   static String ID = 'splashScreen';
+
   const splashScreen({super.key});
 
   @override

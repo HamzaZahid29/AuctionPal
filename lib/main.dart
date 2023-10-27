@@ -11,36 +11,39 @@ import 'package:auctionpal/Screens/MinimalSigbUp.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:auctionpal/Screens/MainPages/MainPage.dart';
-void main() async{
+import 'package:auctionpal/Screens/CreatingPost/CreatePost.dart';
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(
-    ChangeNotifierProvider(create: (context){
+  runApp(ChangeNotifierProvider(
+    create: (context) {
       return UserProvider();
     },
     child: MaterialApp(
       theme: lightTheme,
       darkTheme: darktheme,
-
-      initialRoute:splashScreen.ID,
+      initialRoute: HomeScreen.ID,
       routes: {
-        splashScreen.ID : (context){
+        splashScreen.ID: (context) {
           return splashScreen();
         },
-        signup.ID : (context){
+        signup.ID: (context) {
           return signup();
         },
-        SignUpPage.ID : (context){
+        SignUpPage.ID: (context) {
           return SignUpPage();
         },
-        MinimalSignUp.ID : (context){
+        MinimalSignUp.ID: (context) {
           return MinimalSignUp();
         },
-        HomeScreen.ID : (context){
+        HomeScreen.ID: (context) {
           return HomeScreen();
+        },
+        CreatePost.ID: (context) {
+          return CreatePost();
         }
       },
     ),
-    )
-  );
+  ));
 }

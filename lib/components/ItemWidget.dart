@@ -11,22 +11,18 @@ class ItemWidget extends StatelessWidget {
       padding: EdgeInsets.only(top: 10),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          // color: appMainColor,
+            borderRadius: BorderRadius.circular(8),
+            // color: appMainColor,
             gradient: LinearGradient(
               begin: Alignment.topLeft, // Starting point of the gradient
               end: Alignment.bottomRight, // Ending point of the gradient
               colors: [appMainColor, Colors.black],
-              stops: [0.4, 1.0],// List of gradient colors
+              stops: [0.4, 1.0], // List of gradient colors
             ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black,
-              offset: Offset(0, 4),
-              blurRadius: 4
-            )
-          ]
-        ),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black, offset: Offset(0, 4), blurRadius: 4)
+            ]),
         child: Padding(
           padding: EdgeInsets.all(10),
           child: Column(
@@ -41,13 +37,22 @@ class ItemWidget extends StatelessWidget {
                       radius: 20,
                       backgroundColor: Colors.red,
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('hamza@gmail.com', style: smallSharpText.copyWith(color: Colors.grey.shade200, fontWeight: FontWeight.w700),),
-                        Text('Posted at: 4am 24 oct 2023',style: smallSharpText.copyWith(color: Colors.grey),),
-
+                        Text(
+                          'hamza@gmail.com',
+                          style: smallSharpText.copyWith(
+                              color: Colors.grey.shade200,
+                              fontWeight: FontWeight.w700),
+                        ),
+                        Text(
+                          'Posted at: 4am 24 oct 2023',
+                          style: smallSharpText.copyWith(color: Colors.grey),
+                        ),
                       ],
                     ),
                   ],
@@ -89,7 +94,8 @@ class ItemWidget extends StatelessWidget {
                         color: Colors.blue,
                       ),
                       child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                         child: Center(child: Text("Join")),
                       ),
                     ),
