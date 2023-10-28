@@ -1,11 +1,13 @@
-import 'package:auctionpal/Screens/EmailPass.dart';
+import 'dart:io';
 import 'package:auctionpal/components/ChooseFromBottomSheet.dart';
 import 'package:auctionpal/components/NextBtn.dart';
+import 'package:auctionpal/components/PictureSelectable.dart';
 import 'package:auctionpal/components/SmallBtn.dart';
 import 'package:auctionpal/styles/AppFontStyles.dart';
 import 'package:auctionpal/styles/InputDecorations.dart';
 import 'package:auctionpal/styles/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CreatePost extends StatefulWidget {
   static String ID = 'CreatePost';
@@ -17,15 +19,33 @@ class CreatePost extends StatefulWidget {
 }
 
 class _CreatePostState extends State<CreatePost> {
+  void chooseMultiImage() async {
+    final tempselectedImagesList = await ImagePicker().pickMultiImage();
+    if (tempselectedImagesList.isNotEmpty) {
+      setState(() {
+        selectedImagesList.addAll(tempselectedImagesList);
+      });
+    }
+  }
+  void chooseSingleImage(ImageSource imageSource) async {
+    final tempselectedImage = await ImagePicker().pickImage(source: imageSource);
+    if (selectedImagesList.isNotEmpty) {
+      setState(() {
+        selectedImagesList.add(tempselectedImage!);
+      });
+    }
+  }
+  void clearList(){
+    setState(() {
+      selectedImagesList.clear();
+    });
+  }
+
+  late XFile selecteImage = XFile('');
+  late List<XFile> selectedImagesList = [];
+  int selected = 0;
   @override
   Widget build(BuildContext context) {
-    List<Color> colorlist = [
-      Colors.green,
-      Colors.red,
-      Colors.blue,
-      Colors.yellowAccent
-    ];
-    int selected = 0;
     return Scaffold(
       backgroundColor: appMainColor,
       body: CustomScrollView(
@@ -94,17 +114,59 @@ class _CreatePostState extends State<CreatePost> {
                       GestureDetector(
                         child: SmallBtn(Icons.upload, 'Choose Images'),
                         onTap: () {
-                          showModalBottomSheet(
-                              context: context,
-                              backgroundColor: appMainColor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(20),
-                                      topLeft: Radius.circular(20))),
-                              builder: (context) {
-                                return ChooseFromBtmSheet();
-                              });
+                          chooseMultiImage();
                         },
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    height: 250,
+                    child: GridView.builder(
+                      scrollDirection: Axis.horizontal,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 10.0, // Spacing between columns
+                        mainAxisSpacing: 10.0, // Spacing between rows
+                      ),
+                      itemCount: selectedImagesList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          height: 100,
+                          width: 100,
+                          child: Image.file(File(selectedImagesList[index].path), fit: BoxFit.cover,),
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  Row(
+                    children: [
+                      GestureDetector(child: SmallBtn(Icons.add, 'Add more'),
+                      onTap: (){
+                        showModalBottomSheet(
+                            context: context,
+                            backgroundColor: appMainColor,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    topLeft: Radius.circular(20))),
+                            builder: (context) {
+                              return ChooseFromBtmSheet(() {
+                                chooseSingleImage(ImageSource.gallery);
+                              }, () {
+                                chooseSingleImage(ImageSource.camera);
+                              });
+                            });
+                      },
+                      ),
+                      SizedBox(width: 10,),
+                      GestureDetector(child: SmallBtn(Icons.close, 'Clear'),
+                      onTap: (){
+                        clearList();
+                      },
                       ),
                     ],
                   ),
@@ -115,32 +177,8 @@ class _CreatePostState extends State<CreatePost> {
                     'Choose Thumbnail: ',
                     style: medTextflyer,
                   ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(4, (index) {
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selected = index;
-                              print(selected);
-                            });
-                          },
-                          child: Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Container(
-                              color: selected == index
-                                  ? Colors.brown
-                                  : colorlist[index],
-                              height: 80,
-                              width: 80,
-                            ),
-                          ),
-                        );
-                      }),
-                    ),
-                  ),
-                  NextBtn('Specify Bidding')
+                  PictureSelectable(selectedImagesList ,selected),
+                  NextBtn('Specify Details')
                 ],
               ),
             ),

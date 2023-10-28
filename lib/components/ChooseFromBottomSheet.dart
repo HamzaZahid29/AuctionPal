@@ -2,7 +2,11 @@ import 'package:auctionpal/styles/AppFontStyles.dart';
 import 'package:flutter/material.dart';
 
 class ChooseFromBtmSheet extends StatelessWidget {
-  const ChooseFromBtmSheet({super.key});
+  void Function()? GalleryTap;
+  void Function()? CameraTap;
+
+
+  ChooseFromBtmSheet(this.GalleryTap, this.CameraTap);
 
   @override
   Widget build(BuildContext context) {
@@ -20,20 +24,23 @@ class ChooseFromBtmSheet extends StatelessWidget {
                   style: medTextflyer,
                 ),
                 Expanded(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                        vertical: 10),
-                    child: Row(
-                      mainAxisAlignment:
-                      MainAxisAlignment
-                          .spaceBetween,
-                      children: [
-                        Text(
-                          'Gallery',
-                          style: medTextflyer,
-                        ),
-                        Icon(Icons.photo),
-                      ],
+                  child: GestureDetector(
+                    onTap: GalleryTap,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 10),
+                      child: Row(
+                        mainAxisAlignment:
+                        MainAxisAlignment
+                            .spaceBetween,
+                        children: [
+                          Text(
+                            'Gallery',
+                            style: medTextflyer,
+                          ),
+                          Icon(Icons.photo),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -42,20 +49,23 @@ class ChooseFromBtmSheet extends StatelessWidget {
                   color: Colors.white,
                 ),
                 Expanded(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                        vertical: 10),
-                    child: Row(
-                      mainAxisAlignment:
-                      MainAxisAlignment
-                          .spaceBetween,
-                      children: [
-                        Text(
-                          'Camera',
-                          style: medTextflyer,
-                        ),
-                        Icon(Icons.camera_alt),
-                      ],
+                  child: GestureDetector(
+                    onTap: CameraTap,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 10),
+                      child: Row(
+                        mainAxisAlignment:
+                        MainAxisAlignment
+                            .spaceBetween,
+                        children: [
+                          Text(
+                            'Camera',
+                            style: medTextflyer,
+                          ),
+                          Icon(Icons.camera_alt),
+                        ],
+                      ),
                     ),
                   ),
                 ),
