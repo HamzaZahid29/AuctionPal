@@ -12,7 +12,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:auctionpal/Screens/MainPages/MainPage.dart';
 import 'package:auctionpal/Screens/CreatingPost/CreatePost.dart';
-
+// hi mera nam hamza hai
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
